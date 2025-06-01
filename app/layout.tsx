@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./style/theme";
-
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import SimpleBottomNavigation from "./components/BottomNavigation";
 
 export const metadata: Metadata = {
   title: "Create Next App",

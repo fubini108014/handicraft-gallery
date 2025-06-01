@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
-
+import React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import ExploreIcon from "@mui/icons-material/Explore";
@@ -9,6 +8,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { usePathname } from "next/navigation";
+
 const navigationItems = [
   { label: "首頁", href: "/", icon: <HomeIcon /> },
   { label: "探索", href: "/explore", icon: <ExploreIcon /> },
