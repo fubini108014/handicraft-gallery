@@ -1,5 +1,6 @@
 import React from "react";
-import SimpleBottomNavigation from "../components/BottomNavigation";
+import { SimpleBottomNavigation } from "../components/BottomNavigation";
+import BasicAppBar from "../components/AppBar";
 
 function layout({
   children,
@@ -8,6 +9,7 @@ function layout({
 }>) {
   return (
     <div>
+      <BasicAppBar />
       {children} <SimpleBottomNavigation />
     </div>
   );

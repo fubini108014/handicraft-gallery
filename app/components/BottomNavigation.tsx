@@ -9,7 +9,7 @@ import { Link, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { usePathname } from "next/navigation";
 
-const navigationItems = [
+export const navigationItems = [
   { label: "首頁", href: "/", icon: <HomeIcon /> },
   { label: "探索", href: "/explore", icon: <ExploreIcon /> },
   { label: "藝術家", href: "/artisan", icon: <PersonSearchIcon /> },
@@ -23,8 +23,9 @@ const BottomNavigaionWrapper = styled(Paper)({
     color: "#1976d2 !important",
   },
 });
-function SimpleBottomNavigation() {
+export function SimpleBottomNavigation() {
   const pathname = usePathname();
+
   const value =
     navigationItems.find((item) => {
       if (item.href === "/") {
@@ -56,5 +57,3 @@ function SimpleBottomNavigation() {
     </BottomNavigaionWrapper>
   );
 }
-
-export default SimpleBottomNavigation;
