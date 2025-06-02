@@ -1,6 +1,7 @@
 import React from "react";
 import { SimpleBottomNavigation } from "../components/BottomNavigation";
 import BasicAppBar from "../components/AppBar";
+import { Box } from "@mui/material";
 
 function layout({
   children,
@@ -8,10 +9,10 @@ function layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <Box sx={{ p: "8px" }}>
       <BasicAppBar />
       {children} <SimpleBottomNavigation />
-    </div>
+    </Box>
   );
 }
 

@@ -7,21 +7,33 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import AdbIcon from "@mui/icons-material/Adb";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 export const appBarItems = [
   { title: "Handicarft", href: "/", backButton: false },
   { title: "Explore", href: "/explore", backButton: false },
-  { title: "product detail", href: "/explore/:id", backButton: true },
+  { title: "product detail", href: "/explore/", backButton: true },
   { title: "Artisan", href: "/artisan", backButton: false },
-  { title: "Artisan Detail", href: "/artisan/:id", backButton: true },
+  { title: "Artisan Detail", href: "/artisan/", backButton: true },
 ];
 
 function BasicAppBar() {
   const pathname = usePathname();
-  console.log(pathname);
+  const router = useRouter();
+
+  const params = useParams<{ craftid: string; artisanid: string }>();
+
   const isHome = pathname === "/";
-  const matchedItem = appBarItems.find((item) => item.href === pathname);
+  const matchedItem = appBarItems.find((item) => {
+    if (item.href === pathname) return true;
+
+    if (Object.keys(params).length > 0 && item.href.match(/\/[^/]+\//g)) {
+      return pathname.startsWith(item.href);
+    }
+    return false;
+  });
+  console.log("searchParams:", params);
+
   const title = matchedItem?.title || "";
   const backButton = matchedItem?.backButton || false;
   return (
@@ -36,6 +48,9 @@ function BasicAppBar() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 1 }}
+              onClick={() => {
+                router.back();
+              }}
             >
               <KeyboardBackspaceIcon />
             </IconButton>
