@@ -17,6 +17,7 @@ const Description = styled("div")(({ theme }) => ({
 }));
 
 interface CraftInfo {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -25,22 +26,18 @@ interface CraftInfo {
 function CraftCard({ craftInfo = null }: { craftInfo: CraftInfo | null }) {
   const router = useRouter();
   if (!craftInfo) return null;
-  //craftId
-  const { title, description, image } = craftInfo;
+  const { id, title, description, image } = craftInfo;
   return (
     <Box>
       <Box
-        sx={{ width: "100%", height: "140px", position: "relative" }}
+        sx={{ width: "100%", height: "160px", position: "relative" }}
         onClick={() => {
-          router.push("/explore/craftid");
-          //goPage /explore/craftid
+          router.push(`/explore/${id}`);
         }}
       >
         <Image
           src={image}
           fill
-          //width={90}
-          //height={90}
           style={{ borderRadius: "8px", cursor: "pointer" }}
           alt="Picture of the author"
         />

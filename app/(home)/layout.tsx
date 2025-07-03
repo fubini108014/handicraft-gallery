@@ -11,7 +11,8 @@ function layout({
   return (
     <Box sx={{ p: "8px" }}>
       <BasicAppBar />
-      {children} <SimpleBottomNavigation />
+      <div style={{ paddingBottom: "60px" }}>{children}</div>
+      <SimpleBottomNavigation />
     </Box>
   );
 }
